@@ -34,3 +34,21 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app-tell-the-time
+  namespace: argocd
+spec:
+  description: Tell the Time
+  sourceRepos:
+  - 'https://github.com/timbohiatt/time-keeper-v3-apps-ttt'
+  destinations:
+  - namespace: 'app-time-now'
+    server: https://172.16.0.18
+  - namespace: 'app-time-now'
+    server: https://192.168.0.2
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
