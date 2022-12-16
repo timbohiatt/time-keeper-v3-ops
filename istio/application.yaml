@@ -1,0 +1,38 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-euw6
+  namespace: argocd 
+spec:
+  project: cluster-ops 
+  source:
+    repoURL: https://github.com/timbohiatt/time-keeper-v3-ops
+    targetRevision: HEAD
+    path: istio
+  destination:
+    server: https://192.168.0.2
+    namespace: istio-system
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-australia
+  namespace: argocd 
+spec:
+  project: cluster-ops 
+  source:
+    repoURL: https://github.com/timbohiatt/time-keeper-v3-ops
+    targetRevision: HEAD
+    path: istio
+  destination:
+    server: https://172.16.0.18
+    namespace: istio-system
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

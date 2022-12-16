@@ -1,0 +1,15 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cluster-ops
+  namespace: argocd
+spec:
+  description: Cluster Operations 
+  sourceRepos:
+  - 'https://github.com/timbohiatt/time-keeper-v3-ops'
+  destinations:
+  - namespace: '*'
+    server: https://172.16.0.18
+  - namespace: '*'
+    server: https://192.168.0.2
