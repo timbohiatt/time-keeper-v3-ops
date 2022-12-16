@@ -23,9 +23,9 @@ metadata:
   name: app-bank-of-anthos
   namespace: argocd
 spec:
-  description: Bank of Anthos
+  description: 'Bank of Anthos'
   sourceRepos:
-  - 'https://github.com/timbohiatt/time-keeper-v3-ops'
+  - 'https://github.com/timbohiatt/time-keeper-v3-apps-boa'
   destinations:
   - namespace: 'app-bank-of-anthos'
     server: https://172.16.0.18
@@ -41,7 +41,7 @@ metadata:
   name: app-tell-the-time
   namespace: argocd
 spec:
-  description: Tell the Time
+  description: 'Tell the Time'
   sourceRepos:
   - 'https://github.com/timbohiatt/time-keeper-v3-apps-ttt'
   destinations:
