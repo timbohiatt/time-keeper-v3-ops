@@ -13,3 +13,6 @@ spec:
     server: https://172.16.0.18
   - namespace: '*'
     server: https://192.168.0.2
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
