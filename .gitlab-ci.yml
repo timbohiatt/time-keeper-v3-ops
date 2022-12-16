@@ -1,0 +1,4 @@
+include:
+  - local: '/v3-setup.yml'
+stages:
+  - create-resources 

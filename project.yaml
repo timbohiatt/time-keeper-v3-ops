@@ -16,3 +16,21 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app-bank-of-anthos
+  namespace: argocd
+spec:
+  description: Bank of Anthos
+  sourceRepos:
+  - 'https://github.com/timbohiatt/time-keeper-v3-ops'
+  destinations:
+  - namespace: 'app-bank-of-anthos'
+    server: https://172.16.0.18
+  - namespace: 'app-bank-of-anthos'
+    server: https://192.168.0.2
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

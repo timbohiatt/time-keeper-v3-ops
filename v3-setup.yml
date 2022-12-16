@@ -1,0 +1,31 @@
+#===========================================================================================================================
+#     Demo:         v3-infra-config
+#     Description:  Configure ArgoCD inside Automation GKE Cluster
+#===========================================================================================================================
+
+
+v3-infra-setup-0:
+  stage: create-resources
+  image: gcr.io/tk-automation-1483/time-keeper-cicd:v1.1
+  variables:
+    GCP_PROJECT: "tk-v3-lcl-4421"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != "main"'
+      when: on_success
+  script:
+    - gcloud container clusters list --project="${GCP_PROJECT}"
+    - gcloud container clusters get-credentials automation --region=europe-west6 --project="${GCP_PROJECT}"
+    - kubectl apply -f project.yaml
+
+v3-infra-setup-1:
+  stage: create-resources
+  needs:
+    - job: v3-infra-setup-0
+  image: gcr.io/tk-automation-1483/time-keeper-cicd:v1.1
+  variables:
+    GCP_PROJECT: "tk-v3-lcl-4421"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != "main"'
+      when: on_success
+  script:
+    - sh setup.sh $GCP_PROJECT
