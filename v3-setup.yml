@@ -10,7 +10,7 @@ v3-infra-setup-0:
   variables:
     GCP_PROJECT: "tk-v3-lcl-4421"
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != "main"'
+    - if: '$CI_PIPELINE_SOURCE == "push"'
       when: on_success
   script:
     - gcloud container clusters list --project="${GCP_PROJECT}"
@@ -25,7 +25,7 @@ v3-infra-setup-1:
   variables:
     GCP_PROJECT: "tk-v3-lcl-4421"
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH != "main"'
+    - if: '$CI_PIPELINE_SOURCE == "push"'
       when: on_success
   script:
     - sh setup.sh $GCP_PROJECT
