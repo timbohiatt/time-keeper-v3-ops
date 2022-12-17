@@ -25,7 +25,7 @@ metadata:
 spec:
   description: 'Bank of Anthos'
   sourceRepos:
-  - 'https://github.com/timbohiatt/time-keeper-v3-apps-boa'
+  - 'https://github.com/timbohiatt/time-keeper-v3-apps-boa.git'
   destinations:
   - namespace: 'app-bank-of-anthos'
     server: https://172.16.0.18
