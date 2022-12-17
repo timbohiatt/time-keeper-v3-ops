@@ -52,3 +52,21 @@ spec:
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: app-whereami
+  namespace: argocd
+spec:
+  description: 'Where Am I?
+  sourceRepos:
+  - 'https://github.com/garybowers/whereami.git'
+  destinations:
+  - namespace: 'app-whereami'
+    server: https://172.16.0.18
+  - namespace: 'app-whereami'
+    server: https://192.168.0.2
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
