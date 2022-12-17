@@ -59,7 +59,7 @@ metadata:
   name: app-whereami
   namespace: argocd
 spec:
-  description: 'Where Am I?
+  description: 'Where Am I?'
   sourceRepos:
   - 'https://github.com/garybowers/whereami.git'
   destinations:
